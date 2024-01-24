@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.11 on win32)" generated="20240124 15:46:48.846" rpa="false" schemaversion="4">
+<suite id="s1" name="Tasks" source="C:\Users\javie\Desktop\robot-projects-main\robot-projects\taskforbrowser\tasks.robot">
+<test id="s1-t1" name="Download VirtualBox" line="13">
+<status status="FAIL" starttime="20240124 15:46:49.014" endtime="20240124 15:46:49.015">Test cannot be empty.</status>
+</test>
+<doc>This is a bot for download something</doc>
+<status status="FAIL" starttime="20240124 15:46:48.849" endtime="20240124 15:46:49.016"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
