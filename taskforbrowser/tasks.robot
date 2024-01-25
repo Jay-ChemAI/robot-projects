@@ -2,6 +2,7 @@
 Library    SeleniumLibrary
 Library    OperatingSystem
 Library    BuiltIn
+Library    RPA.Desktop.Windows
 
 *** Variables ***
 ${URL}            https://download.virtualbox.org/virtualbox/7.0.14/VirtualBox-7.0.14-161095-Win.exe
@@ -10,8 +11,9 @@ ${CHROME_DRIVER_PATH}     ${CURDIR}${/}/chromedriver-win64/chromedriver.exe
 
 *** Test Cases ***
 Download and statuss
-    ${result_of_download}=  Run Keyword And Return Status           Download VirtualBox
-
+    #result_of_download}=  Run Keyword And Return Status           Download VirtualBox
+    ${result_of_run_installer}=  Run Keyword And Return Status          Run the installer
+    
 
 *** Keywords ***
 Download VirtualBox
@@ -31,3 +33,7 @@ Download VirtualBox
     Log    Waiting for download...
     Sleep   20s
     Log    Succesful download!
+
+Run the installer
+    ${status_of_open_installer}=    Run Executable    ${DOWNLOAD_DIR}/VirtualBox-7.0.14-161095-Win.exe
+    Log    ${status_of_open_installer}

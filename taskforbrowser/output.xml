@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.11 on win32)" generated="20240124 19:23:44.572" rpa="false" schemaversion="4">
+<suite id="s1" name="Tasks" source="C:\Users\javie\Desktop\robot-projects-main\robot-projects\taskforbrowser\tasks.robot">
+<test id="s1-t1" name="Download and statuss" line="13">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${result_of_run_installer}</var>
+<arg>Run the installer</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Run the installer">
+<kw name="Run Executable">
+<var>${status_of_open_installer}</var>
+<arg>${DOWNLOAD_DIR}/VirtualBox-7.0.14-161095-Win.exe</arg>
+<msg timestamp="20240124 19:23:45.096" level="FAIL">No keyword with name 'Run Executable' found. Did you try using keyword 'OperatingSystem.Run' and forgot to use enough whitespace between keyword and arguments?</msg>
+<status status="FAIL" starttime="20240124 19:23:45.096" endtime="20240124 19:23:45.096"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${status_of_open_installer}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20240124 19:23:45.096" endtime="20240124 19:23:45.096"/>
+</kw>
+<status status="FAIL" starttime="20240124 19:23:45.092" endtime="20240124 19:23:45.096"/>
+</kw>
+<msg timestamp="20240124 19:23:45.096" level="INFO">${result_of_run_installer} = False</msg>
+<status status="PASS" starttime="20240124 19:23:45.092" endtime="20240124 19:23:45.096"/>
+</kw>
+<status status="PASS" starttime="20240124 19:23:45.091" endtime="20240124 19:23:45.096"/>
+</test>
+<status status="PASS" starttime="20240124 19:23:44.573" endtime="20240124 19:23:45.097"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20240124 19:23:45.086" level="WARN">C:\Users\javie\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\RPA\Desktop\Windows.py:216: FutureWarning: `RPA.Desktop.Windows` got deprecated and will be no longer maintained, please use `RPA.Windows` instead (https://robocorp.com/docs/libraries/rpa-framework/rpa-windows)
+  deprecation(
+</msg>
+</errors>
+</robot>
