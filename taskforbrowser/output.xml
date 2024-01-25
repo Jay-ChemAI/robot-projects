@@ -1,20 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.11 on win32)" generated="20240124 15:46:48.846" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.10.11 on win32)" generated="20240124 18:11:57.898" rpa="false" schemaversion="4">
 <suite id="s1" name="Tasks" source="C:\Users\javie\Desktop\robot-projects-main\robot-projects\taskforbrowser\tasks.robot">
-<test id="s1-t1" name="Download VirtualBox" line="13">
-<status status="FAIL" starttime="20240124 15:46:49.014" endtime="20240124 15:46:49.015">Test cannot be empty.</status>
+<test id="s1-t1" name="Download and status" line="12">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${result_of_download}</var>
+<arg>Download VirtualBox</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Download VirtualBox">
+<kw name="Set Environment Variable" library="OperatingSystem">
+<arg>webdriver.chrome.driver</arg>
+<arg>${CHROME_DRIVER_PATH}</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<msg timestamp="20240124 18:11:58.064" level="INFO">Environment variable 'webdriver.chrome.driver' set to value 'C:\Users\javie\Desktop\robot-projects-main\robot-projects\taskforbrowser\/chromedriver-win64/chromedriver.exe'.</msg>
+<status status="PASS" starttime="20240124 18:11:58.064" endtime="20240124 18:11:58.065"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240124 18:11:58.065" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000000006090F70&gt;</msg>
+<status status="PASS" starttime="20240124 18:11:58.065" endtime="20240124 18:11:58.065"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240124 18:11:58.065" endtime="20240124 18:11:58.065"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240124 18:11:58.065" endtime="20240124 18:11:58.065"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240124 18:11:58.065" endtime="20240124 18:11:58.065"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240124 18:11:58.065" endtime="20240124 18:11:58.066"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${prefs}</var>
+<arg>download.default_directory</arg>
+<arg>${DOWNLOAD_DIR}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240124 18:11:58.066" level="INFO">${prefs} = {'download.default_directory': 'C:/Users/javie/Downloads'}</msg>
+<status status="PASS" starttime="20240124 18:11:58.066" endtime="20240124 18:11:58.066"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_experimental_option</arg>
+<arg>prefs</arg>
+<arg>${prefs}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240124 18:11:58.066" endtime="20240124 18:11:58.066"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${prefs2}</var>
+<arg>safebrowsing.enabled</arg>
+<arg>False</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240124 18:11:58.066" level="INFO">${prefs2} = {'safebrowsing.enabled': 'False'}</msg>
+<status status="PASS" starttime="20240124 18:11:58.066" endtime="20240124 18:11:58.066"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_experimental_option</arg>
+<arg>prefs</arg>
+<arg>${prefs2}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240124 18:11:58.066" endtime="20240124 18:11:58.066"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>options=${chrome_options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20240124 18:11:58.067" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20240124 18:11:58.066" endtime="20240124 18:11:59.679"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240124 18:12:00.694" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240124 18:11:59.679" endtime="20240124 18:12:00.694"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240124 18:12:00.694" level="INFO">Opening url 'https://download.virtualbox.org/virtualbox/7.0.14/VirtualBox-7.0.14-161095-Win.exe'</msg>
+<status status="PASS" starttime="20240124 18:12:00.694" endtime="20240124 18:12:00.823"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Waiting for download...</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240124 18:12:00.823" level="INFO">Waiting for download...</msg>
+<status status="PASS" starttime="20240124 18:12:00.823" endtime="20240124 18:12:00.823"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240124 18:12:20.830" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20240124 18:12:00.823" endtime="20240124 18:12:20.830"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Succesful download!</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240124 18:12:20.830" level="INFO">Succesful download!</msg>
+<status status="PASS" starttime="20240124 18:12:20.830" endtime="20240124 18:12:20.830"/>
+</kw>
+<status status="PASS" starttime="20240124 18:11:58.064" endtime="20240124 18:12:20.830"/>
+</kw>
+<msg timestamp="20240124 18:12:20.830" level="INFO">${result_of_download} = True</msg>
+<status status="PASS" starttime="20240124 18:11:58.064" endtime="20240124 18:12:20.830"/>
+</kw>
+<status status="PASS" starttime="20240124 18:11:58.063" endtime="20240124 18:12:20.831"/>
 </test>
-<doc>This is a bot for download something</doc>
-<status status="FAIL" starttime="20240124 15:46:48.849" endtime="20240124 15:46:49.016"/>
+<status status="PASS" starttime="20240124 18:11:57.900" endtime="20240124 18:12:20.832"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
 </suite>
 </statistics>
 <errors>

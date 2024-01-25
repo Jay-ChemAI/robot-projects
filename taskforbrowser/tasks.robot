@@ -1,29 +1,33 @@
 *** Settings ***
-Documentation      This is a bot for download something
-Library            SeleniumLibrary
-Library            Process
-Library            BuiltIn
+Library    SeleniumLibrary
+Library    OperatingSystem
+Library    BuiltIn
 
 *** Variables ***
-${BROWSER}          Chrome
-${URL}              https://download.virtualbox.org/virtualbox/7.0.14/VirtualBox-7.0.14-161095-Win.exe
-${BROWSER_DIR}      ${CURDIR}$/chromedriver-win64/chromedriver.exe
+${URL}            https://download.virtualbox.org/virtualbox/7.0.14/VirtualBox-7.0.14-161095-Win.exe
+${DOWNLOAD_DIR}   C:/Users/javie/Downloads
+${CHROME_DRIVER_PATH}     ${CURDIR}${/}/chromedriver-win64/chromedriver.exe
 
 *** Test Cases ***
-${Download} = Run Keyword and Return Status    Download VirtualBox
-IF    ${Download} == True
-    Log To Console    Download VirtualBox Success
-ELSE
-    Log To Console    Download VirtualBox Failed
-END
+Download and statuss
+    ${result_of_download}=  Run Keyword And Return Status           Download VirtualBox
+
 
 *** Keywords ***
 Download VirtualBox
     Set Environment Variable    webdriver.chrome.driver    ${CHROME_DRIVER_PATH}
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${chrome_options}    add_argument    --headless
+    #Call Method    ${chrome_options}    add_argument    --headless
     Call Method    ${chrome_options}    add_argument    --disable-gpu
     Call Method    ${chrome_options}    add_argument    --no-sandbox
     Call Method    ${chrome_options}    add_argument    --disable-dev-shm-usage
+    ${prefs}=    Create Dictionary    download.default_directory    ${DOWNLOAD_DIR}
+    Call Method    ${chrome_options}    add_experimental_option    prefs    ${prefs}
+    ${prefs2}=    Create Dictionary     safebrowsing.enabled            False
+    Call Method    ${chrome_options}    add_experimental_option    prefs    ${prefs2}
     Create Webdriver    Chrome    options=${chrome_options}
+    Sleep   1s
     Go To    ${URL}
+    Log    Waiting for download...
+    Sleep   20s
+    Log    Succesful download!
