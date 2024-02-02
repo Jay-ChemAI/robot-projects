@@ -5,10 +5,10 @@ Library    BuiltIn
 Library    RPA.Desktop.Windows
 
 *** Variables ***
-${URL}            https://www.wwww.instagram.com/
+${URL}            https://www.youtube.com
 ${USERNAME}       
 ${PASSWORD}       
-${CHROME_DRIVER_PATH}     ${CURDIR}${/}/chromedriver-win64/chromedriver.exe
+${CHROME_DRIVER_PATH}     C:/Users/javie/Desktop/robot-projects-main/robot-projects/chromedriver-win64/chromedriver.exe
 
 *** Test Cases ***
 Download and statuss
@@ -23,6 +23,6 @@ Open_insta
     Call Method    ${chrome_options}    add_argument    --no-sandbox
     Call Method    ${chrome_options}    add_argument    --disable-dev-shm-usage
     Create Webdriver    Chrome    options=${chrome_options}
-    Sleep   1s
+    Sleep   1S
     Go To    ${URL}
- 
+    Sleep   10S
