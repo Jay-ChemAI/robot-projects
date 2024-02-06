@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.11 on win32)" generated="20240205 23:30:05.411" rpa="false" schemaversion="4">
+<suite id="s1" name="Tasks" source="C:\Users\javie\Desktop\robot-projects-main\robot-projects\chemistry_data_bot\chemical_db\tasks.robot">
+<test id="s1-t1" name="run" line="15">
+<kw name="csvring">
+<var>${csvring}</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${DOWNLOAD_DIR}</var>
+<arg>C:\\Users\\javie\\Desktop\\robot-projects-main\\robot-projects\\chemistry_data_bot\\chemical_db${/}dataset</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240205 23:30:05.595" level="INFO">${DOWNLOAD_DIR} = C:\Users\javie\Desktop\robot-projects-main\robot-projects\chemistry_data_bot\chemical_db\dataset</msg>
+<status status="PASS" starttime="20240205 23:30:05.595" endtime="20240205 23:30:05.595"/>
+</kw>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>python</arg>
+<arg>newcsv.py</arg>
+<arg>${DOWNLOAD_DIR}</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20240205 23:30:05.596" level="INFO">Starting process:
+python newcsv.py C:\Users\javie\Desktop\robot-projects-main\robot-projects\chemistry_data_bot\chemical_db\dataset</msg>
+<msg timestamp="20240205 23:30:05.603" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20240205 23:30:51.149" level="INFO">Process completed.</msg>
+<msg timestamp="20240205 23:30:51.149" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20240205 23:30:05.595" endtime="20240205 23:30:51.149"/>
+</kw>
+<msg timestamp="20240205 23:30:51.149" level="INFO">${csvring} = None</msg>
+<status status="PASS" starttime="20240205 23:30:05.595" endtime="20240205 23:30:51.149"/>
+</kw>
+<status status="PASS" starttime="20240205 23:30:05.594" endtime="20240205 23:30:51.150"/>
+</test>
+<doc>Bot for download dataset from chembl</doc>
+<status status="PASS" starttime="20240205 23:30:05.413" endtime="20240205 23:30:51.151"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
